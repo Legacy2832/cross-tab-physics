@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross-Window Physics</title>
+    <meta name="description" content="Balls and liquid water that flow between separate browser windows, simulated live with no server.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3C16 3 6 14 6 20a10 10 0 0 0 20 0C26 14 16 3 16 3z' fill='%230284c7'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- SVG Filter for Liquid Surface Rendering -->
+    <svg style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; pointer-events: none;">
+        <defs>
+            <filter id="water-goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5.2" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="
+                    1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 24 -8.2" />
+            </filter>
+        </defs>
+    </svg>
+
+    <pre id="readout"></pre>
+    <div id="controls">
+        <button id="spawnBtn">● Spawn Balls</button>
+        <button id="spawnWaterBtn">≋ Pour Water</button>
+        <button id="spawnWindowBtn">+ New Window</button>
+        <button id="toggleHudBtn"><span class="indicator"></span> HUD [H]</button>
+        <button id="clearBtn">Clear</button>
+    </div>
+
+    <!-- Liquid Layer -->
+    <canvas id="waterCanvas"></canvas>
+    <!-- Rigid Spheres Layer & Interaction -->
+    <canvas id="ballCanvas"></canvas>
+
+
+    <!-- ES modules are deferred automatically, so the elements above exist when the code runs. -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
