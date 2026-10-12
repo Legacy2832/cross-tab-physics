@@ -2,7 +2,7 @@
 
 A browser sandbox where balls and liquid water live in screen space instead of inside a single page. Open several windows, arrange them so they touch or overlap, and whatever you spawn flows from one window into the next. Everything runs in the browser. There is no server and no build step.
 
-**Github Pages:** `https://legacy2832.github.io/cross-tab-physics/`
+**Github Pages:** https://legacy2832.github.io/cross-tab-physics/
 
 ## Quick start
 
