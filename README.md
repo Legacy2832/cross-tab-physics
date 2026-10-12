@@ -1,4 +1,4 @@
-# Cross-Window Physics
+# Cross-Tab Physics
 
 A browser sandbox where balls and liquid water live in screen space instead of inside a single page. Open several windows, arrange them so they touch or overlap, and whatever you spawn flows from one window into the next. Everything runs in the browser. There is no server and no build step.
 
@@ -31,31 +31,6 @@ A browser sandbox where balls and liquid water live in screen space instead of i
 **Water.** Water uses a position-based fluid method, double density relaxation (Clavet, Beaudoin and Poulin, 2005), with XSPH viscosity and a spatial hash grid for neighbor lookups. Water in a peer window takes part as a read-only neighbor, so liquid behaves consistently across a seam. A few caps on pressure, viscosity and speed keep the simulation stable under extreme compression.
 
 **Rendering.** Two stacked canvases: one for water and one for balls. An SVG filter blurs and thresholds the water layer so neighboring droplets merge into a single surface.
-
-## Project structure
-
-```
-cross-window-physics/
-├── index.html               Page markup and the SVG water filter
-├── css/
-│   └── styles.css           Layout and theme
-└── js/
-    ├── main.js              Per-frame loop that ties everything together
-    ├── config.js            All tunable constants
-    ├── world.js             Particles owned by this window
-    ├── network.js           BroadcastChannel messaging and peer registry
-    ├── window-tracker.js    Window position, velocity estimate and heartbeats
-    ├── geometry.js          Viewport boxes and portal detection
-    ├── spatial-grid.js      Spatial hash grid
-    ├── spawners.js          Ball, water and companion-window creation
-    ├── renderer.js          Canvas drawing
-    ├── ui.js                Buttons, keyboard, mouse pouring and telemetry
-    └── physics/
-        ├── boundaries.js    Wall, floor and ceiling collisions
-        ├── rigid-bodies.js  Ball integration and ball-to-ball contacts
-        ├── fluid.js         Water simulation
-        └── handoff.js       Ownership transfer through portals
-```
 
 ## Run locally
 
